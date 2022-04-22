@@ -1,7 +1,7 @@
 scalar GraphQLDate
 
 type Game {
-    id: String,
+    gid: String,
     name: String,
     genre: String,
     posterPath: String,
@@ -10,13 +10,13 @@ type Game {
 }
 
 type User {
-    id: String!
+    uid: String!
     name: String!
     games: String!
 }
 
 input UserInput {
-    id: String!,
+    uid: String!,
     name: String!
     games: String!
 }
@@ -25,7 +25,7 @@ input UserInput {
 type Query {
     allGames: [Game!]!,
     userGameList(id:String): [Game!]!,
-    user(id:String): User
+    user(uid:String): User
 }
 
 type Mutation {

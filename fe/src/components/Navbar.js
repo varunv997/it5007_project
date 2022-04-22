@@ -4,6 +4,51 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import GoogleLogin from 'react-google-login';
 
+async function createUser(profileobj) {
+  let query = `mutation {
+    createUser(user: {
+      uid: "${profileobj.googleId}",
+      name: "${profileobj.givenName}",
+      games: "",
+    }) {
+      uid
+    }
+  }`;
+
+  console.log(query)
+
+  const response = await fetch('http://localhost:3000/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify({ query })
+  });
+
+  const body = await response.text();
+  const result = JSON.parse(body);
+  return result.data.createUser.uid
+}
+
+async function getUser(profileObj) {
+  const query = `query {
+    user(uid:"${profileObj.googleId.toString()}") {
+      uid
+    }
+  }`;
+
+  console.log(query)
+
+  const response = await fetch('http://localhost:3000/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify( {query} )
+  });
+
+  const body = await response.text();
+  const result = JSON.parse(body);
+
+  return result.data.user ? result.data.user.uid : await createUser(profileObj)
+}
+
 function Navbar() {
   const [loginData, setLoginData] = useState(
     localStorage.getItem('loginData')
@@ -14,8 +59,11 @@ function Navbar() {
     alert(result);
   }
   const handleLogin = (googleData) => {
-    console.log(googleData)
+    console.log(googleData.googleId)
+    console.log(googleData.profileObj.givenName)
     setLoginData(googleData)
+    const userId = getUser(googleData.profileObj);
+    localStorage.setItem('loginData', userId);
   }
   const handleLogout = () => {
     localStorage.removeItem('loginData')

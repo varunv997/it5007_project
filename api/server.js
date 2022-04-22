@@ -46,8 +46,8 @@ async function userGameList(_, {id}) {
   return games;
 }
 
-async function user(_, {id}) {
-  let user = await db.collection('users').findOne({}, {id:id});
+async function user(_, {uid}) {
+  let user = await db.collection('users').findOne({uid:uid}, {});
   return user;
 }
 
