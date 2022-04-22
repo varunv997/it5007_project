@@ -1,5 +1,14 @@
 scalar GraphQLDate
 
+type Game {
+    id: String,
+    name: String,
+    genre: String,
+    posterPath: String,
+    caption: String,
+    path: String
+}
+
 type User {
     id: String!
     name: String!
