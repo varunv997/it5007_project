@@ -1,0 +1,24 @@
+scalar GraphQLDate
+
+type User {
+    id: String!
+    name: String!
+    games: String!
+}
+
+input UserInput {
+    id: String!,
+    name: String!
+    games: String!
+}
+
+# Top level Query
+type Query {
+    allGames: [Game!]!,
+    userGameList(id:String): [Game!]!,
+    user(id:String): User
+}
+
+type Mutation {
+    createUser(user: UserInput!): User!
+}
