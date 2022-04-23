@@ -46,13 +46,13 @@ async function getUser(profileObj) {
   const body = await response.text();
   const result = JSON.parse(body);
 
-  return result.data.user ? result.data.user.uid : await createUser(profileObj)
+  return result.data.user ? result.data.user.uid : await createUser(profileObj);
 }
 
 function Navbar() {
   const [loginData, setLoginData] = useState(
     localStorage.getItem('loginData')
-    ? JSON.parse(localStorage.getItem('loginData'))
+    ? localStorage.getItem('loginData')
     : null
   )
   const handleFailure = (result) => {
@@ -61,7 +61,7 @@ function Navbar() {
   const handleLogin = (googleData) => {
     console.log(googleData.googleId)
     console.log(googleData.profileObj.givenName)
-    setLoginData(googleData)
+    setLoginData(googleData.googleId)
     const userId = getUser(googleData.profileObj);
     localStorage.setItem('loginData', userId);
   }
