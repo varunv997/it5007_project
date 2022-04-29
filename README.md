@@ -26,26 +26,24 @@ The controls server is written in Python as a REST webservice where it captures 
 ### DB Server
 The DB server stores the user information after she logs into the application via google login. Preferably, this should run in a linux machine (not necessary).
 
-1. **Install mongodb**
-    a. wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add –
-    b. echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-    c. sudo apt-get update && sudo apt-get upgrade
-    d. sudo apt-get install -y mongodb-org
-2. **Start mongodb**
+1. **Install mongodb**<br/>
+    a. wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add –<br/>
+    b. echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list<br/>
+    c. sudo apt-get update && sudo apt-get upgrade<br/>
+    d. sudo apt-get install -y mongodb-org<br/>
+2. **Start mongodb**<br/>
     a. sudo screen mongod
-3. **Install node**
-    a. wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-    b. nvm install 14.1.0
-    c. export NVM_DIR="$HOME/.nvm"
-
-    d. [ -s "$NVM_DIR/nvm.sh" ] && \\. "\$NVM/nvm.sh"
-
-    e. [ -s "$NVM_DIR/bash_completion" ] && \\. "\$NVM_DIR/bash_completion"
-    f. nvm use 14.1.0
-4. **Run**
-    a. cd api
-    b. npm install
-    c. npm run
+3. **Install node**<br/>
+    a. wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash<br/>
+    b. nvm install 14.1.0<br/>
+    c. export NVM_DIR="$HOME/.nvm"<br/>
+    d. [ -s "$NVM_DIR/nvm.sh" ] && \\. "\$NVM/nvm.sh"<br/>
+    e. [ -s "$NVM_DIR/bash_completion" ] && \\. "\$NVM_DIR/bash_completion"<br/>
+    f. nvm use 14.1.0<br/>
+4. **Run**<br/>
+    a. cd api<br/>
+    b. npm install<br/>
+    c. npm run<br/>
 
 **Note:** You should now be able to navigate to localhost:3000/graphql
 
