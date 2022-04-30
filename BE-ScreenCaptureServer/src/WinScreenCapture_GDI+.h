@@ -1,12 +1,3 @@
-/*************************************************************************************************/
-/* Project: Screen capture server                                                                */
-/* Author: @aviloria (GitHub)                                                                    */
-/*-----------------------------------------------------------------------------------------------*/
-/* Copyleft license                                                                              */
-/*    YOU ARE ALLOWED TO FREELY DISTRIBUTE COPIES AND MODIFIED VERSIONS OF THIS WORK WITH        */
-/*    THE STIPULATION THAT THE SAME RIGHTS BE PRESERVED IN DERIVATIVE WORKS CREATED LATER.       */
-/*************************************************************************************************/
-//-------------------------------------------------------------------------------------------------
 #ifndef __WINSCREENCAPTURE_GDIPLUS_H__
 #define __WINSCREENCAPTURE_GDIPLUS_H__
 //-------------------------------------------------------------------------------------------------

@@ -37,21 +37,25 @@ const resolvers = {
 
 
 async function allGames() {
+  // get all games
   let games = await db.collection('games').find({}).toArray();
   return games;
 }
 
 async function userGameList(_, {id}) {
+  // get all games pertaining to the user
   let games = await db.collection('games').find({id:id}, {id:id}).toArray();
   return games;
 }
 
 async function user(_, {uid}) {
+  // get the user
   let user = await db.collection('users').findOne({uid:uid}, {});
   return user;
 }
 
 async function createUser(_, { user }) {
+  // create a user in the db
   const result = await db.collection('users').insertOne(user);
   const savedUser = await db.collection('users')
     .findOne({ _id: result.insertedId }); 
@@ -69,6 +73,7 @@ const server = new ApolloServer ({
 
 
 async function connectToDb() {
+  // connect to the db
   const client = new MongoClient(url, { useNewUrlParser: true });
   await client.connect();
   console.log('Connected to MongoDB at', url);
@@ -82,6 +87,7 @@ server.applyMiddleware({ app, path: '/graphql' });
 
 (async function () {
   try {
+    // connect to db
     await connectToDb();
     app.listen(3000, function () {
       console.log('App started on port 3000');
